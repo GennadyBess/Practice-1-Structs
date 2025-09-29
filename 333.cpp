@@ -1,20 +1,43 @@
 #include <iostream>
 
+// void init(float kx, float ky) {
+//     x = kx;
+//     y = ky;
+// }
+
+// void print() {
+//     std::cout << x << " " << y;
+// }
+
 int main() {
     struct Point {
-        float coords[2];
-
-        void init(float x, float y) {
-            coords[0] = x;
-            coords[1] = y;
-        }
-        
-        void print() {
-            std::cout << coords[0] << " " << coords[1];
-        }
+        float x, y;
 
     };
+
+    struct Circle {
+        float center_coords[2];
+        float r;
+    };
+
+    struct Square {
+        float coords[2];
+        float length;
+    };
+
     Point a;
-    a.init(1.23, 3.232);
-    a.print();
+    a.x = 1.22;
+    a.y = 2.22;
+    Circle b;
+    b.center_coords[0] = 0;
+    b.center_coords[1] = 0;
+    b.r = 3;
+    std::cout << Point_within_Circle(a, b);
+
+
+}
+
+bool Point_within_Circle(Point &point, Circle &circle) {
+    if (pow(point.x - circle.center_coords[0]) + pow(point.y - circle.center_coords[1]) <= circle.r) return true;
+    else return false;
 }
